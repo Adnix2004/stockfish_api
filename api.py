@@ -5,10 +5,7 @@ import os
 app = Flask(__name__)
 
 # Chemin vers l'exécutable Stockfish (à adapter selon le chemin local)
-
-
 STOCKFISH_PATH = os.path.join(os.getcwd(), "engine/stockfish-ubuntu-x86-64-avx2")
-
 
 # Vérification que le chemin existe
 if not os.path.isfile(STOCKFISH_PATH):
@@ -16,6 +13,7 @@ if not os.path.isfile(STOCKFISH_PATH):
 
 # Instanciation globale du moteur Stockfish
 stockfish = Stockfish(STOCKFISH_PATH)
+
 @app.route("/get-best-move", methods=["POST"])
 def get_best_move():
     data = request.json
@@ -30,6 +28,14 @@ def get_best_move():
         return jsonify({"error": "Impossible de calculer le meilleur coup"}), 500
 
     return jsonify({"bestmove": best_move})
+
+@app.route("/ping", methods=["GET"])
+def ping():
+    return jsonify({
+        "stockfish_path": STOCKFISH_PATH,
+        "stockfish_exists": os.path.isfile(STOCKFISH_PATH),
+        "stockfish_running": stockfish.is_stockfish_running()
+    })
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
