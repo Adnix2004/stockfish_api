@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Chemin vers l'exécutable Stockfish (à adapter selon le chemin local)
 
 
-STOCKFISH_PATH = os.path.join(os.getcwd(), "stockfish_api\engine\stockfish-ubuntu-x86-64-avx2")
+STOCKFISH_PATH = os.path.join(os.getcwd(), "engine/stockfish-ubuntu-x86-64-avx2")
 
 
 # Vérification que le chemin existe
