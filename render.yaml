@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: |
-      chmod +x stockfish-linux/stockfish
+      chmod +x engine/stockfish-ubuntu-x86-64
       pip install -r requirements.txt
     startCommand: gunicorn api:app
     region: oregon
