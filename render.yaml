@@ -6,7 +6,7 @@ services:
     buildCommand: |
       chmod +x stockfish-linux/stockfish
       pip install -r requirements.txt
-    startCommand: python api.py
+    startCommand: gunicorn api:app
     region: oregon
     branch: main
     rootDir: stockfish_api
