@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Chemin vers l'exécutable Stockfish (à adapter selon le chemin local)
-STOCKFISH_PATH = os.path.join(os.getcwd(), "C:/Users/elamr/Downloads/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x86-64-avx2.exe")
+STOCKFISH_PATH = os.path.join(os.getcwd(), "C:/Users/elamr/OneDrive/Desktop/flutter_application_2/stockfish_api/engine/stockfish-ubuntu-x86-64-avx2")
 
 # Vérification que le chemin existe
 if not os.path.isfile(STOCKFISH_PATH):
