@@ -32,9 +32,16 @@ def get_best_move():
 @app.route("/ping", methods=["GET"])
 
 def ping():
+    try:
+        stockfish.set_position([])
+        ready = True
+    except Exception:
+        ready = False
+
     return jsonify({
         "stockfish_path": STOCKFISH_PATH,
-        "stockfish_exists": os.path.isfile(STOCKFISH_PATH)
+        "stockfish_exists": os.path.isfile(STOCKFISH_PATH),
+        "stockfish_ready": ready
     })
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
